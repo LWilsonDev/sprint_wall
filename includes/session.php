@@ -6,12 +6,14 @@ class Session {
     public $user_id;
     public $message;
     public $count;
+    public $sprint_id;
 
     function __construct(){
         session_start();
         $this->visitor_count();
         $this->check_login();
         $this->check_message();
+        $this->sprint_id();
     }
 
     // getter method: taking a private property ($signed_in) and returning its value in a public property, accessible anywhere.
@@ -59,6 +61,14 @@ class Session {
         }
     }
 
+    public function sprint_id($sprint_id=""){
+        if(!empty($sprint_id)) {
+            $_SESSION['sprint_id'] = $sprint_id;
+        } else {
+            return $this->sprint_id;
+        }
+    }
+
     public function visitor_count(){
         if(isset($_SESSION['count'])) {
             return $this->count = $_SESSION['count']++;
@@ -66,7 +76,6 @@ class Session {
             return $_SESSION['count'] = 1;
         }
     }
-
 
 }
 

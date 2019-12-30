@@ -16,6 +16,7 @@ class User extends Db_object {
 
 
     public function upload_photo() {
+        
         return empty($this->user_image) ? $this->image_placeholder : $this->upload_directory.DS.$this->user_image;
     }
 
@@ -39,6 +40,7 @@ class User extends Db_object {
         } elseif($file['error'] !=0) {
 
             $this->errors[] = $this->upload_errors[$file['error']];
+            echo($this->upload_errors[$file['error']]);
             return false;
 
         } else {
@@ -47,7 +49,6 @@ class User extends Db_object {
             $this->tmp_path = $file['tmp_name'];
             $this->type     = $file['type'];
             $this->size     = $file['size'];
-
         }
     }
 
@@ -63,7 +64,8 @@ class User extends Db_object {
             return false;
         }
 
-        $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->user_image;
+        $target_path = SITE_ROOT . DS . $this->upload_directory . DS . $this->user_image;
+    
 
         if(file_exists($target_path)) {
             $this->errors[] = "{$this->user_image} already exists";
@@ -87,7 +89,7 @@ class User extends Db_object {
     }
 
     public function ajax_save_user_image($user_image, $user_id){
-
+echo('hi from ajax_function');
         global $database;
 
         $user_image = $database->escape_string($user_image);
@@ -99,6 +101,7 @@ class User extends Db_object {
         $sql = "UPDATE " . self::$db_table . " SET user_image = '{$this->user_image}'";
         $sql .= " WHERE id = {$this->id} ";
         $update_image = $database->query($sql);
+        echo('hello');
 
         echo $this->upload_photo();
     }

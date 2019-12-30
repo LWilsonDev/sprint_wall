@@ -21,12 +21,15 @@ if(isset($_POST['update'])) {
         $user->password = $_POST['password'];
 
         if(empty($_FILES['user_image'])) {
+            echo('no file');
             $user->save();
 
         } else {
+            
             $user->set_file($_FILES['user_image']);
+            
             $user->upload_photo();
-            $user->save();
+            $user->save_user_and_image();
 
 //            redirect("edit_user.php?id={$user->id}");
         }
@@ -40,8 +43,8 @@ if(isset($_POST['update'])) {
 
 <div class=" col-md-4 mx-auto mt-4">
     <h1>Profile</h1>
-            <div class="user_image_box">
-                <a href="#" data-toggle="modal" data-target="#photo-modal"><img class="img-responsive" src="<?php echo $user->upload_photo(); ?>" alt=""></a>
+            <div class="user_image_box" style="background-image: url('<?php echo $user->upload_photo(); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;" >
+                 
             </div>
 
 

@@ -1,0 +1,30 @@
+.user_image_box{
+	height: 100px;
+	width:100px;
+	border-radius: 50%;
+}
+
+.user_image_small{
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+}
+
+.bg-img {
+	background-size: cover; 
+	background-position: center; 
+	background-repeat: no-repeat;
+}
+
+.user_photo {
+	height: 100%;
+	width:auto;
+}
+
+.pull-right{
+	float: right;
+}
+
+.inline {
+	display: inline;
+}
