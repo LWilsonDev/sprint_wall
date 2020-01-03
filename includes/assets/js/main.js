@@ -1,5 +1,5 @@
 function clearForm(form_id){
-	document.getElementsByClassName(form_id).reset();
+	document.getElementById(form_id).reset();
 }
 
 function selectCategory(cat_id){
@@ -15,13 +15,13 @@ function selectCategory(cat_id){
 //      // $('#addBookDialog').modal('show');
 // });
 $(document).ready(function(){  
-      $('.view_data').click(function(){  
+      $('.view_data').click(function(){
            var post_id = $(this).attr("id-data"); 
            var title = $(this).attr('title-data'); 
            var extra = $(this).attr('extra-data');
            var author = $(this).attr('author-data');
            $.ajax({  
-                url:"../board.php",
+                url:"board.php",
                 method:"post",  
                 data:{'post_id':post_id},  
                 success:function(response){  
@@ -32,6 +32,11 @@ $(document).ready(function(){
                      $('#dataModal').modal("show");  
                 }  
            });  
-      });  
- }); 
+      });
+
+    $('.clear-form').click(function(){
+
+    });
+
+ });
 

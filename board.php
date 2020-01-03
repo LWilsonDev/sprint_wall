@@ -154,25 +154,8 @@ $sprint = Sprint::find_by_id($sprint_id);
  -->
 
 <?php include("post_modal.php"); ?>
+<?php include("post_detail_modal.php"); ?>
 
-
-<div id="dataModal" class="modal fade">  
-      <div class="modal-dialog">  
-           <div class="modal-content">  
-                <div class="modal-header">  
-                     <h5 class="modal-title " id=""></h5>
-        <button onclick="clearForm('add-post-form')" type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-                </div>  
-                <div class="modal-body" id="employee_detail">  
-                </div>  
-                <div class="modal-footer">  
-                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
-                </div>  
-           </div>  
-      </div>  
- </div> 
 
 <!-- Modal -->
 <div class="modal fade" id="<?php echo $post->id.'id'; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
