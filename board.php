@@ -11,7 +11,9 @@ if(!$session->is_signed_in()){
     redirect('login.php');
 }
 
-
+if($_GET['sprint_id']){
+    $_SESSION['sprint_id'] = $_GET['sprint_id'];
+}
 $sprint_id = $_SESSION['sprint_id'];
 if(!$sprint_id){
     redirect('index.php');
@@ -182,26 +184,26 @@ $sprint = Sprint::find_by_id($sprint_id);
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    <form id='add-post-form' action='board.php' method='POST'>
+    <form class='add-post-form' action='board.php' method='POST'>
       <div class="modal-body">
      
   
   <div class="form-group">
-    <label for="postform-category">Category</label>
-    <select name='category' class="form-control" id="postform-category">
-      <option id='start_select' value='Start'>Start</option>
-      <option id='stop_select' value='Stop'>Stop</option>
-      <option id='cont_select' value='Continue'>Continue</option>
+    <label for="category">Category</label>
+    <select name='category' class="form-control">
+      <option class='start_select' value='Start'>Start</option>
+      <option class='stop_select' value='Stop'>Stop</option>
+      <option class='cont_select' value='Continue'>Continue</option>
     </select>
   </div>
   <div class="form-group">
-    <label for="post-form-title">Suggestion</label>
-    <input name='title' class="form-control" id='post-form-title'>
+    <label for="title">Suggestion</label>
+    <input name='title' class="form-control" >
   </div>
   
   <div class="form-group">
-    <label for="postform-extra-info">Extra Info</label>
-    <textarea name='extra_text' id='postform-extra-info' class="form-control" rows="3"></textarea>
+    <label for="extra-info">Extra Info</label>
+    <textarea name='extra-info' class="form-control" rows="3"></textarea>
   </div>
   <input type='hidden' name='sprint_id' value="<?php echo ($sprint_id); ?>">
 

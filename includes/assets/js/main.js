@@ -1,9 +1,9 @@
 function clearForm(form_id){
-	document.getElementById(form_id).reset();
+	document.getElementsByClassName(form_id).reset();
 }
 
 function selectCategory(cat_id){
-	document.getElementById(cat_id).selected = "true";
+	document.getElementsByClassName(cat_id).selected = "true";
 }
 
 
@@ -21,7 +21,7 @@ $(document).ready(function(){
            var extra = $(this).attr('extra-data');
            var author = $(this).attr('author-data');
            $.ajax({  
-                url:"../board.php",  
+                url:"../board.php",
                 method:"post",  
                 data:{'post_id':post_id},  
                 success:function(response){  
