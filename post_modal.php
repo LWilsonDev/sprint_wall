@@ -1,5 +1,4 @@
-
-<!-- Modal -->
+<!-- Add Post Modal -->
 <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -30,11 +29,12 @@
     <label for="postform-extra-info">Extra Info</label>
     <textarea name='extra_text' id='postform-extra-info' class="form-control" rows="3"></textarea>
   </div>
+  <input type='hidden' name='sprint_id' value="<?php echo ($sprint_id); ?>">
 
       </div>
       <div class="modal-footer">
         <button onclick="clearForm('add-post-form')" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button name="formSubmit" type="submit" class="btn btn-info">Submit</button>
+        <button name="submit" type="submit" class="btn btn-info">Submit</button>
       </div>
       </form>
     </div>

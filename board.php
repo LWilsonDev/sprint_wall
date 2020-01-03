@@ -18,6 +18,10 @@ if(!$sprint_id){
 }
 
 
+
+
+
+
 if(isset($_POST['submit'])) {
     $title = trim($_POST['title']);
     $extra_text = trim($_POST['extra_text']);
@@ -74,12 +78,14 @@ $sprint = Sprint::find_by_id($sprint_id);
              <?php $target = '#'.$post->id . 'target'; ?>
 
 
-            <div class="col-md-4 col-lg-3" >
+            <div class="col-sm-6 col-md-4 col-lg-3" >
                 <div class='card mb-4'>
                     <div class="card-header">
                         <?php $author = User::find_by_id($post->author_id); ?>
+
                         <div title=' <?php echo($author->username); ?>' class="user_image_small bg-img" style="background-image: url('<?php echo $author->upload_photo(); ?>');" >
                         </div>
+                        <input type="button" name="view" value="view" id-data="<?php echo $post->id; ?>" author-data="<?php echo($author->username); ?>"extra-data="<?php echo($post->extra_text); ?>" title-data="<?php echo($post->title); ?>" class="btn btn-info btn-xs view_data pull-right" /> 
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"><?php echo($post->title); ?></h5>
@@ -97,7 +103,7 @@ $sprint = Sprint::find_by_id($sprint_id);
 </div>
       <hr>   
 </div>
-<div class='col-sm-12'>
+<!-- <div class='col-sm-12'>
     <h2 class='inline mr-2'>Stop </h2>
     <button onclick="selectCategory('stop_select')" type='button' data-toggle="modal" data-target="#postModal" class='btn btn-info pull-right'>Add Post</button>
 
@@ -143,15 +149,35 @@ $sprint = Sprint::find_by_id($sprint_id);
 </div>
       <hr>   
 </div>
+ -->
+
+<?php include("post_modal.php"); ?>
 
 
+<div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <h5 class="modal-title " id=""></h5>
+        <button onclick="clearForm('add-post-form')" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>  
+                <div class="modal-body" id="employee_detail">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div> 
 
 <!-- Modal -->
-<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="<?php echo $post->id.'id'; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Post</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Blah</h5>
         <button onclick="clearForm('add-post-form')" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -188,8 +214,6 @@ $sprint = Sprint::find_by_id($sprint_id);
     </div>
   </div>
 </div>
-
-
 
 
 <?php include("footer.php"); ?>
